@@ -49,4 +49,3 @@ namespace HololensCppModules
         virtual Windows::ApplicationModel::Core::IFrameworkView^ CreateView();
     };
 }
-
