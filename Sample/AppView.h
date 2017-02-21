@@ -3,7 +3,7 @@
 #include "Common\DeviceResources.h"
 #include "SampleMain.h"
 
-namespace Sample
+namespace HololensCppModules
 {
     // IFrameworkView class. Connects the app with the Windows shell and handles application lifecycle events.
     ref class AppView sealed : public Windows::ApplicationModel::Core::IFrameworkView
@@ -34,12 +34,12 @@ namespace Sample
     private:
         std::unique_ptr<SampleMain> m_main;
 
-        std::shared_ptr<DX::DeviceResources>                m_deviceResources;
-        bool                                                m_windowClosed  = false;
-        bool                                                m_windowVisible = true;
+        std::shared_ptr<DX::DeviceResources> m_deviceResources;
+        bool m_windowClosed  = false;
+        bool m_windowVisible = true;
 
         // The holographic space the app will use for rendering.
-        Windows::Graphics::Holographic::HolographicSpace^   m_holographicSpace = nullptr;
+        Windows::Graphics::Holographic::HolographicSpace^ m_holographicSpace = nullptr;
     };
 
     // The entry point for the app.
