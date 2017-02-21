@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "SamplePch.h"
 
 #include "CameraResources.h"
 #include "Common\DirectXHelper.h"
