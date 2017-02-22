@@ -32,7 +32,6 @@ namespace HoloLensCppModules
 			Windows::Perception::Spatial::SpatialCoordinateSystem^ baseCoordinateSystem,
 			Windows::Perception::Spatial::SpatialCoordinateSystem^ spatialSurfaceCoordinateSystem,
 			DirectX::SimpleMath::Vector3 vertexPositionScale);
-		static DirectX::SimpleMath::Vector3 CalculateHololensPreviewCameraDirection(float pixelX, float pixelY);
 		static DirectX::SimpleMath::Matrix GetTransformWithoutTranslation(DirectX::SimpleMath::Matrix transform);
 		static DirectX::SimpleMath::Ray GetTransformedRay(DirectX::SimpleMath::Ray ray, DirectX::SimpleMath::Matrix transform);
 

@@ -118,7 +118,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <CompileAsWinRT>true</CompileAsWinRT>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeaderFile>HoloLensCppModulesPch.h</PrecompiledHeaderFile>
@@ -131,7 +131,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <CompileAsWinRT>true</CompileAsWinRT>
       <SDLCheck>true</SDLCheck>
       <PrecompiledHeaderFile>HoloLensCppModulesPch.h</PrecompiledHeaderFile>
@@ -191,11 +191,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Constants.h" />
     <ClInclude Include="HoloLensCppModulesPch.h" />
     <ClInclude Include="LocatableCamera\LocatableCameraFrame.h" />
     <ClInclude Include="LocatableCamera\LocatableCameraModule.h" />
     <ClInclude Include="Logger.h" />
+    <ClInclude Include="SpatialMapping\SpatialMappingFrameEntry.h" />
+    <ClInclude Include="SpatialMapping\SpatialMappingFrame.h" />
+    <ClInclude Include="SpatialMapping\SpatialMappingModule.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Utility.h" />
   </ItemGroup>
@@ -204,6 +206,9 @@
     <ClCompile Include="LocatableCamera\LocatableCameraFrame.cpp" />
     <ClCompile Include="LocatableCamera\LocatableCameraModule.cpp" />
     <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="SpatialMapping\SpatialMappingFrameEntry.cpp" />
+    <ClCompile Include="SpatialMapping\SpatialMappingFrame.cpp" />
+    <ClCompile Include="SpatialMapping\SpatialMappingModule.cpp" />
     <ClCompile Include="Utility.cpp" />
   </ItemGroup>
   <ItemGroup>

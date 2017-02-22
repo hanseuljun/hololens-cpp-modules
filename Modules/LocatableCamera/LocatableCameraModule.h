@@ -11,9 +11,6 @@
 
 #pragma once
 
-#include <ppltasks.h>
-#include <shared_mutex>
-
 #include "LocatableCameraFrame.h"
 
 namespace HoloLensCppModules
@@ -27,9 +24,7 @@ namespace HoloLensCppModules
 			Platform::Agile<Windows::Media::Capture::MediaCapture> mediaCapture,
 			Windows::Media::Capture::Frames::MediaFrameReader^ reader,
 			Windows::Media::Capture::Frames::MediaFrameSource^ source);
-
-		std::shared_ptr<LocatableCameraFrame> GetFrameContainer();
-		Windows::Media::Capture::Frames::VideoMediaFrameFormat^ GetCurrentFormat();
+		std::shared_ptr<LocatableCameraFrame> GetFrame();
 
 	private:
 		void OnFrameArrived(
@@ -45,7 +40,7 @@ namespace HoloLensCppModules
 
 		std::shared_mutex m_propertiesLock;
 		Windows::Media::Capture::Frames::MediaFrameSource^ m_mediaFrameSource;
-		std::shared_ptr<LocatableCameraFrame> m_frameContainer;
+		std::shared_ptr<LocatableCameraFrame> m_frame;
 		uint32 m_frameId;
 	};
 }

@@ -2,7 +2,6 @@
 #include "Utility.h"
 
 #include <robuffer.h>
-#include "Constants.h"
 
 namespace HoloLensCppModules
 {
@@ -117,23 +116,6 @@ namespace HoloLensCppModules
 		auto spatialSurfaceCoordinateSystemTransform = Utility::LoadMatrix(spatialSurfaceCoordinateSystemTransformBox->Value);
 
 		return DirectX::SimpleMath::Matrix::CreateScale(vertexPositionScale) * spatialSurfaceCoordinateSystemTransform;
-	}
-
-	DirectX::SimpleMath::Vector3 Utility::CalculateHololensPreviewCameraDirection(float pixelX, float pixelY)
-	{
-		using HololensPreviewCameraConstant::c_sx;
-		using HololensPreviewCameraConstant::c_sy;
-		using HololensPreviewCameraConstant::c_cx;
-		using HololensPreviewCameraConstant::c_cy;
-
-		const float z = -1.0f;
-		float x = -(pixelX + c_cx) * z / c_sx;
-		float y = -(pixelY + c_cy) * z / c_sy;
-
-		DirectX::SimpleMath::Vector3 direction(x, y, z);
-		direction.Normalize();
-
-		return direction;
 	}
 
 	DirectX::SimpleMath::Matrix Utility::GetTransformWithoutTranslation(DirectX::SimpleMath::Matrix transform)

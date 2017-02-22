@@ -117,15 +117,10 @@ namespace HoloLensCppModules
 		});
 	}
 
-	std::shared_ptr<LocatableCameraFrame> LocatableCameraModule::GetFrameContainer()
+	std::shared_ptr<LocatableCameraFrame> LocatableCameraModule::GetFrame()
 	{
 		auto lock = std::shared_lock<std::shared_mutex>(m_propertiesLock);
-		return m_frameContainer;
-	}
-
-	Windows::Media::Capture::Frames::VideoMediaFrameFormat^ LocatableCameraModule::GetCurrentFormat()
-	{
-		return m_mediaFrameSource->CurrentFormat->VideoFormat;
+		return m_frame;
 	}
 
 	void LocatableCameraModule::OnFrameArrived(
@@ -162,7 +157,7 @@ namespace HoloLensCppModules
 						{
 							std::lock_guard<std::shared_mutex> lock(m_propertiesLock);
 
-							m_frameContainer = std::make_shared<LocatableCameraFrame>(
+							m_frame = std::make_shared<LocatableCameraFrame>(
 								++m_frameId, softwareBitmap, cameraSpatialCoordinateSystem,
 								cameraViewTransform, cameraProjectionTransform);
 						}

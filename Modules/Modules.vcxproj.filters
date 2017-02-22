@@ -8,6 +8,9 @@
     <Filter Include="LocatableCamera">
       <UniqueIdentifier>{9b36e254-eee8-44da-adb8-2369e74c3a21}</UniqueIdentifier>
     </Filter>
+    <Filter Include="SpatialMapping">
+      <UniqueIdentifier>{f6210898-9494-4818-bdc6-9089328be6ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Logger.cpp" />
@@ -19,6 +22,15 @@
       <Filter>LocatableCamera</Filter>
     </ClCompile>
     <ClCompile Include="HoloLensCppModulesPch.cpp" />
+    <ClCompile Include="SpatialMapping\SpatialMappingFrame.cpp">
+      <Filter>SpatialMapping</Filter>
+    </ClCompile>
+    <ClCompile Include="SpatialMapping\SpatialMappingFrameEntry.cpp">
+      <Filter>SpatialMapping</Filter>
+    </ClCompile>
+    <ClCompile Include="SpatialMapping\SpatialMappingModule.cpp">
+      <Filter>SpatialMapping</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="targetver.h" />
@@ -31,7 +43,15 @@
       <Filter>LocatableCamera</Filter>
     </ClInclude>
     <ClInclude Include="HoloLensCppModulesPch.h" />
-    <ClInclude Include="Constants.h" />
+    <ClInclude Include="SpatialMapping\SpatialMappingFrame.h">
+      <Filter>SpatialMapping</Filter>
+    </ClInclude>
+    <ClInclude Include="SpatialMapping\SpatialMappingFrameEntry.h">
+      <Filter>SpatialMapping</Filter>
+    </ClInclude>
+    <ClInclude Include="SpatialMapping\SpatialMappingModule.h">
+      <Filter>SpatialMapping</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

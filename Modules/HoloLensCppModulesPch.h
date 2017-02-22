@@ -14,6 +14,7 @@
 #include <DirectXColors.h>
 #include <dwrite_2.h>
 #include <map>
+#include <memory>
 #include <mutex>
 #include <ppltasks.h>
 #include <shared_mutex>
