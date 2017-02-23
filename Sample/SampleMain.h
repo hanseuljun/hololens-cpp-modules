@@ -79,5 +79,9 @@ namespace HoloLensCppModules
 		// Modules from HoloLensCppModules.
 		std::shared_ptr<LocatableCameraModule> m_locatableCameraModule;
 		std::shared_ptr<SpatialMappingModule> m_spatialMappingModule;
+
+		// Frames saved to make the log pretty.
+		std::shared_ptr<LocatableCameraFrame> m_locatableCameraFrame;
+		std::shared_ptr<SpatialMappingFrame> m_spatialMappingFrame;
     };
 }

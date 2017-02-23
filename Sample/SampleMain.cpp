@@ -169,18 +169,50 @@ namespace HoloLensCppModules
 		{
 		}
 
-		// Access to the current locatable camera frame.
 		if (m_locatableCameraModule != nullptr)
 		{
+			// Access to the current locatable camera frame.
 			auto locatableCameraFrame = m_locatableCameraModule->GetFrame();
+			
 			if (locatableCameraFrame != nullptr)
 			{
-				Logger::Log(L"Found a locatable camera frame with ID " + locatableCameraFrame->GetId() + "!");
+				int id = locatableCameraFrame->GetId();
+				if (id % 100 == 0 && id != m_locatableCameraFrame->GetId())
+				{
+					Logger::Log(L"Found a locatable camera frame with ID " + id + L"!");
+				}
 			}
 			else
 			{
 				Logger::Log(L"Locatable camera frame is not available yet.");
 			}
+
+			m_locatableCameraFrame = locatableCameraFrame;
+		}
+
+		if (m_spatialMappingModule != nullptr)
+		{
+			// Update the bounding volume of the spatial mapping module with the application's starting point.
+			m_spatialMappingModule->UpdateBoundingVolume(currentCoordinateSystem);
+
+			// Access to the current spatial mapping frame.
+			auto spatialMappingFrame = m_spatialMappingModule->GetFrame();
+			if (spatialMappingFrame != nullptr)
+			{
+				int id = spatialMappingFrame->GetId();
+				if (id % 5 == 0 && id != m_spatialMappingFrame->GetId())
+				{
+					Logger::Log(L"Found a spatial mapping frame with ID " + id + L"!");
+					int surfaceCount = spatialMappingFrame->GetEntries().size();
+					Logger::Log(L"It contains " + surfaceCount + L" surfaces.");
+				}
+			}
+			else
+			{
+				Logger::Log(L"SpatialMappingFrame is not available yet.");
+			}
+
+			m_spatialMappingFrame = spatialMappingFrame;
 		}
 
 		// The holographic frame will be used to get up-to-date view and projection matrices and
@@ -295,6 +327,7 @@ namespace HoloLensCppModules
 	void SampleMain::OnDeviceLost()
 	{
 		m_locatableCameraModule = nullptr;
+		m_spatialMappingModule = nullptr;
 	}
 
 	// Notifies classes that use Direct3D device resources that the device resources
@@ -398,9 +431,31 @@ namespace HoloLensCppModules
 
 	void SampleMain::LoadLocatableCameraModuleAsync()
 	{
+		using Windows::Perception::Spatial::SpatialPerceptionAccessStatus;
+		using Windows::Perception::Spatial::Surfaces::SpatialSurfaceObserver;
+
 		LocatableCameraModule::CreateAsync().then([this](std::shared_ptr<LocatableCameraModule> module)
 		{
 			m_locatableCameraModule = std::move(module);
+		});
+
+		// The spatial mapping API reads information about the user's environment. The user must
+		// grant permission to the app to use this capability of the Windows Holographic device.
+		auto requestSpatialMappingAccessTask = concurrency::create_task(SpatialSurfaceObserver::RequestAccessAsync());
+		requestSpatialMappingAccessTask.then([this](SpatialPerceptionAccessStatus status)
+		{
+			// For info on what else can cause this, see: http://msdn.microsoft.com/library/windows/apps/mt621422.aspx
+			if (status == SpatialPerceptionAccessStatus::Allowed)
+			{
+				// Create the spatial mapping module.
+				m_spatialMappingModule = std::move(std::make_shared<SpatialMappingModule>());
+			}
+			// Access was denied. This usually happens because your AppX manifest file does not declare the
+			// spatialPerception capability.
+			else
+			{
+				Logger::Log(L"Access denied.");
+			}
 		});
 	}
 }
