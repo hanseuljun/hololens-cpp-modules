@@ -2,9 +2,11 @@
 
 #include "Common\DeviceResources.h"
 #include "Common\StepTimer.h"
+#include "LocatableCamera\LocatableCameraModule.h"
+#include "SpatialMapping\SpatialMappingModule.h"
 
 // Updates, renders, and presents holographic content using Direct3D.
-namespace HololensCppModules
+namespace HoloLensCppModules
 {
     class SampleMain : public DX::IDeviceNotify
     {
@@ -51,6 +53,9 @@ namespace HololensCppModules
         // and when tearing down AppMain.
         void UnregisterHolographicEventHandlers();
 
+		// Creates and moves a locatable camera module asynchronouslly.
+		void LoadLocatableCameraModuleAsync();
+
         // Cached pointer to device resources.
         std::shared_ptr<DX::DeviceResources> m_deviceResources;
 
@@ -70,5 +75,9 @@ namespace HololensCppModules
         Windows::Foundation::EventRegistrationToken m_cameraAddedToken;
         Windows::Foundation::EventRegistrationToken m_cameraRemovedToken;
         Windows::Foundation::EventRegistrationToken m_locatabilityChangedToken;
+
+		// Modules from HoloLensCppModules.
+		std::shared_ptr<LocatableCameraModule> m_locatableCameraModule;
+		std::shared_ptr<SpatialMappingModule> m_spatialMappingModule;
     };
 }

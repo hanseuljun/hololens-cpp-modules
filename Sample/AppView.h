@@ -3,7 +3,7 @@
 #include "Common\DeviceResources.h"
 #include "SampleMain.h"
 
-namespace HololensCppModules
+namespace HoloLensCppModules
 {
     // IFrameworkView class. Connects the app with the Windows shell and handles application lifecycle events.
     ref class AppView sealed : public Windows::ApplicationModel::Core::IFrameworkView

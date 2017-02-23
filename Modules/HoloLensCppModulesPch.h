@@ -18,9 +18,9 @@
 #include <mutex>
 #include <ppltasks.h>
 #include <shared_mutex>
+#include <SimpleMath.h>
 #include <stddef.h>
 #include <wincodec.h>
 #include <WindowsNumerics.h>
 
 #include "Logger.h"
-#include "Utility.h"

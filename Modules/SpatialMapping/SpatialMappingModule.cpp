@@ -1,7 +1,6 @@
 #include "HoloLensCppModulesPch.h"
 #include "SpatialMappingModule.h"
 
-#include <SimpleMath.h>
 #include "Utility.h"
 
 namespace HoloLensCppModules
@@ -10,7 +9,7 @@ namespace HoloLensCppModules
 		: m_observer(ref new Windows::Perception::Spatial::Surfaces::SpatialSurfaceObserver())
 		, m_maxTrianglesPerCubicMeters(1000.0)
 		, m_options(ref new Windows::Perception::Spatial::Surfaces::SpatialSurfaceMeshOptions())
-		, m_surfaceId(0)
+		, m_frameId(0)
 	{
 		using std::placeholders::_1;
 		using std::placeholders::_2;
@@ -111,7 +110,7 @@ namespace HoloLensCppModules
 
 		{
 			std::lock_guard<std::shared_mutex> lock(m_propertiesLock);
-			m_frame = std::make_shared<SpatialMappingFrame>(++m_surfaceId, m_entries);
+			m_frame = std::make_shared<SpatialMappingFrame>(++m_frameId, m_entries);
 		}
 	}
 

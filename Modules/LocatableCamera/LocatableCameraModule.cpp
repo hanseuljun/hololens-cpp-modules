@@ -13,6 +13,8 @@
 #include "HoloLensCppModulesPch.h"
 #include "LocatableCameraModule.h"
 
+#include "Utility.h"
+
 namespace HoloLensCppModules
 {
 	// strings for GUIDs are from https://developer.microsoft.com/ko-kr/windows/holographic/locatable_camera
@@ -40,7 +42,7 @@ namespace HoloLensCppModules
 				std::bind(&LocatableCameraModule::OnFrameArrived, this, _1, _2));
 	}
 
-	concurrency::task<std::shared_ptr<LocatableCameraModule>> LocatableCameraModule::CreateAsync()
+	Concurrency::task<std::shared_ptr<LocatableCameraModule>> LocatableCameraModule::CreateAsync()
 	{
 		using Windows::Media::Capture::MediaCapture;
 		using Windows::Media::Capture::MediaCaptureInitializationSettings;

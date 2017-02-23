@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\directxtk_uwp.2017.2.10.1\build\native\directxtk_uwp.props" Condition="Exists('..\packages\directxtk_uwp.2017.2.10.1\build\native\directxtk_uwp.props')" />
   <PropertyGroup Label="Globals">
     <ProjectGuid>{d8f6e702-734f-4264-b1cd-0d09c6564d34}</ProjectGuid>
     <Keyword>HolographicApp</Keyword>
@@ -112,6 +113,7 @@
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
+    <None Include="packages.config" />
     <None Include="Sample_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
@@ -132,13 +134,26 @@
       <ShaderModel>5.0</ShaderModel>
     </FxCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Modules\Modules.vcxproj">
+      <Project>{385e63db-5879-4601-9f27-28c5089956fb}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
     <Import Project="$(VSINSTALLDIR)\Common7\IDE\Extensions\Microsoft\VsGraphics\ImageContentTask.targets" />
     <Import Project="$(VSINSTALLDIR)\Common7\IDE\Extensions\Microsoft\VsGraphics\MeshContentTask.targets" />
     <Import Project="$(VSINSTALLDIR)\Common7\IDE\Extensions\Microsoft\VsGraphics\ShaderGraphContentTask.targets" />
+    <Import Project="..\packages\directxtk_uwp.2017.2.10.1\build\native\directxtk_uwp.targets" Condition="Exists('..\packages\directxtk_uwp.2017.2.10.1\build\native\directxtk_uwp.targets')" />
   </ImportGroup>
   <PropertyGroup>
     <AppxPackageSigningEnabled>true</AppxPackageSigningEnabled>
   </PropertyGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\directxtk_uwp.2017.2.10.1\build\native\directxtk_uwp.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\directxtk_uwp.2017.2.10.1\build\native\directxtk_uwp.props'))" />
+    <Error Condition="!Exists('..\packages\directxtk_uwp.2017.2.10.1\build\native\directxtk_uwp.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\directxtk_uwp.2017.2.10.1\build\native\directxtk_uwp.targets'))" />
+  </Target>
 </Project>

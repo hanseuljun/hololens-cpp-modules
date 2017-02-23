@@ -8,14 +8,14 @@
 [Platform::MTAThread]
 int main(Platform::Array<Platform::String^>^)
 {
-	using HololensCppModules::AppViewSource;
+	using HoloLensCppModules::AppViewSource;
 
 	AppViewSource^ appViewSource = ref new AppViewSource();
 	Windows::ApplicationModel::Core::CoreApplication::Run(appViewSource);
 	return 0;
 }
 
-namespace HololensCppModules
+namespace HoloLensCppModules
 {
 	Windows::ApplicationModel::Core::IFrameworkView^ AppViewSource::CreateView()
 	{

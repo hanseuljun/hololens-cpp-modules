@@ -5,7 +5,7 @@
 #include <windows.graphics.directx.direct3d11.interop.h>
 #include <Collection.h>
 
-namespace HololensCppModules
+namespace HoloLensCppModules
 {
 	// Loads and initializes application assets when the application is loaded.
 	SampleMain::SampleMain(const std::shared_ptr<DX::DeviceResources>& deviceResources) :
@@ -83,6 +83,8 @@ namespace HololensCppModules
 		//   indicates to be of special interest. Anchor positions do not drift, but can be corrected; the
 		//   anchor will use the corrected position starting in the next frame after the correction has
 		//   occurred.
+
+		LoadLocatableCameraModuleAsync();
 	}
 
 	void SampleMain::UnregisterHolographicEventHandlers()
@@ -165,6 +167,20 @@ namespace HololensCppModules
 
 		for (auto cameraPose : prediction->CameraPoses)
 		{
+		}
+
+		// Access to the current locatable camera frame.
+		if (m_locatableCameraModule != nullptr)
+		{
+			auto locatableCameraFrame = m_locatableCameraModule->GetFrame();
+			if (locatableCameraFrame != nullptr)
+			{
+				Logger::Log(L"Found a locatable camera frame with ID " + locatableCameraFrame->GetId() + "!");
+			}
+			else
+			{
+				Logger::Log(L"Locatable camera frame is not available yet.");
+			}
 		}
 
 		// The holographic frame will be used to get up-to-date view and projection matrices and
@@ -278,12 +294,14 @@ namespace HololensCppModules
 	// need to be released before this method returns.
 	void SampleMain::OnDeviceLost()
 	{
+		m_locatableCameraModule = nullptr;
 	}
 
 	// Notifies classes that use Direct3D device resources that the device resources
 	// may now be recreated.
 	void SampleMain::OnDeviceRestored()
 	{
+		LoadLocatableCameraModuleAsync();
 	}
 
 	void SampleMain::OnLocatabilityChanged(Windows::Perception::Spatial::SpatialLocator^ sender, Platform::Object^ args)
@@ -376,5 +394,13 @@ namespace HololensCppModules
 		// deallocating resources for this camera. At 60 frames per second this wait should
 		// not take long.
 		m_deviceResources->RemoveHolographicCamera(args->Camera);
+	}
+
+	void SampleMain::LoadLocatableCameraModuleAsync()
+	{
+		LocatableCameraModule::CreateAsync().then([this](std::shared_ptr<LocatableCameraModule> module)
+		{
+			m_locatableCameraModule = std::move(module);
+		});
 	}
 }

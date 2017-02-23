@@ -4,6 +4,7 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:uap2="http://schemas.microsoft.com/appx/manifest/uap/windows10/2"
   IgnorableNamespaces="uap mp">
 
   <Identity Name="153f89b4-0df3-49ed-981b-d4a537879528"
@@ -41,4 +42,9 @@
         </uap:VisualElements>
       </Application>
   </Applications>
+  <Capabilities>
+    <uap2:Capability Name="spatialPerception"/>
+    <DeviceCapability Name="webcam" />
+    <DeviceCapability Name="microphone" />
+  </Capabilities>
 </Package>

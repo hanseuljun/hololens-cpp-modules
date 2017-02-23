@@ -28,6 +28,6 @@ namespace HoloLensCppModules
 		std::shared_mutex m_propertiesLock;
 		std::map<Platform::Guid, std::shared_ptr<SpatialMappingFrameEntry>> m_entries;
 		std::shared_ptr<SpatialMappingFrame> m_frame;
-		uint32 m_surfaceId;
+		uint32 m_frameId;
 	};
 }
