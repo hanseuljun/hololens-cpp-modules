@@ -195,6 +195,8 @@
     <ClInclude Include="LocatableCamera\LocatableCameraFrame.h" />
     <ClInclude Include="LocatableCamera\LocatableCameraModule.h" />
     <ClInclude Include="Logger.h" />
+    <ClInclude Include="RayCast\RayCaster.h" />
+    <ClInclude Include="RayCast\RayCastResult.h" />
     <ClInclude Include="SpatialMapping\SpatialMappingFrameEntry.h" />
     <ClInclude Include="SpatialMapping\SpatialMappingFrame.h" />
     <ClInclude Include="SpatialMapping\SpatialMappingModule.h" />
@@ -209,6 +211,8 @@
     <ClCompile Include="LocatableCamera\LocatableCameraFrame.cpp" />
     <ClCompile Include="LocatableCamera\LocatableCameraModule.cpp" />
     <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="RayCast\RayCaster.cpp" />
+    <ClCompile Include="RayCast\RayCastResult.cpp" />
     <ClCompile Include="SpatialMapping\SpatialMappingFrameEntry.cpp" />
     <ClCompile Include="SpatialMapping\SpatialMappingFrame.cpp" />
     <ClCompile Include="SpatialMapping\SpatialMappingModule.cpp" />

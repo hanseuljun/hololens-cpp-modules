@@ -11,6 +11,9 @@
     <Filter Include="SpatialMapping">
       <UniqueIdentifier>{f6210898-9494-4818-bdc6-9089328be6ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="RayCast">
+      <UniqueIdentifier>{48d40d60-98d3-4fa0-af55-24ef64e5a292}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Logger.cpp" />
@@ -30,6 +33,12 @@
     </ClCompile>
     <ClCompile Include="SpatialMapping\SpatialMappingModule.cpp">
       <Filter>SpatialMapping</Filter>
+    </ClCompile>
+    <ClCompile Include="RayCast\RayCaster.cpp">
+      <Filter>RayCast</Filter>
+    </ClCompile>
+    <ClCompile Include="RayCast\RayCastResult.cpp">
+      <Filter>RayCast</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +60,12 @@
     </ClInclude>
     <ClInclude Include="SpatialMapping\SpatialMappingModule.h">
       <Filter>SpatialMapping</Filter>
+    </ClInclude>
+    <ClInclude Include="RayCast\RayCaster.h">
+      <Filter>RayCast</Filter>
+    </ClInclude>
+    <ClInclude Include="RayCast\RayCastResult.h">
+      <Filter>RayCast</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

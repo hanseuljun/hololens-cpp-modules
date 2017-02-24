@@ -1,6 +1,7 @@
 #include "SamplePch.h"
 #include "SampleMain.h"
 #include "Common\DirectXHelper.h"
+#include "RayCast\RayCaster.h"
 
 #include <windows.graphics.directx.direct3d11.interop.h>
 #include <Collection.h>
@@ -123,6 +124,7 @@ namespace HoloLensCppModules
 	// Updates the application state once per frame.
 	Windows::Graphics::Holographic::HolographicFrame^ SampleMain::Update()
 	{
+		using DirectX::SimpleMath::Vector2;
 		using Windows::Graphics::Holographic::HolographicFrame;
 		using Windows::Graphics::Holographic::HolographicFramePrediction;
 		using Windows::Graphics::Holographic::HolographicCameraRenderingParameters;
@@ -213,6 +215,16 @@ namespace HoloLensCppModules
 			}
 
 			m_spatialMappingFrame = spatialMappingFrame;
+		}
+
+		if (m_locatableCameraFrame != nullptr && m_spatialMappingFrame != nullptr)
+		{
+			if (m_locatableCameraFrame->GetId() % 100 == 0)
+			{
+				auto result = RayCaster::RayCast(Vector2::Zero, m_locatableCameraFrame, m_spatialMappingFrame, currentCoordinateSystem);
+				float distance = result->GetDistance();
+				Logger::Log(L"The distance of the RayCaster's result is " + distance + ".");
+			}
 		}
 
 		// The holographic frame will be used to get up-to-date view and projection matrices and
