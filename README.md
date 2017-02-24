@@ -1,6 +1,6 @@
 # hololens-cpp-modules
 
-Since it was difficult to find any reusable code for UWP based c++ HoloLens applications, I would like to share mine.
+Since it was difficult to find any reusable code for UWP based C++ HoloLens applications, I would like to share mine.
 
 Currently, this repository has 2 modules: LocatableCameraModule and SpatialMappingModule.
 
@@ -16,7 +16,9 @@ This module lets you access to the spatial information that your HoloLens provid
 
 # RayCaster
 
-There is also a raycaster using frames of both modules. You can use it in 2 ways. By choosing a preview camera's pixel, or using a ray in the psudo-world coordinate system.
+There is also a raycaster using frames of both modules. You can use it in 2 ways.
+
+By choosing a preview camera's pixel, or by a ray in the psudo-world coordinate system.
 
 Psudo-world cooridnate system means the "currentCoordinateSystem" in SimpleMain.
 
@@ -28,6 +30,6 @@ They should be removed, but I no longer have a HoloLens. Sorry.
 
 This repository, which does not have enough comments, includes a sample project to introduce you how to use the modules.
 
-I recommend you to read SampleMain.h and SampleMain.cpp before using the modules.
+Thus, I recommend you to read SampleMain.h and SampleMain.cpp before using the modules.
 
-The sample project creates the modules then leaves simple relevant logs.
+The sample project creates the modules then leaves simple logs.
