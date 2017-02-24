@@ -38,6 +38,6 @@ The sample project creates the modules then leaves simple logs.
 
 These codes were written while I have worked in HCIL, Seoul National University (http://hcil.snu.ac.kr) with
 
-- Han Joo Chae
 - Youli Chang
+- Han Joo Chae
 - Jungin Hwang
