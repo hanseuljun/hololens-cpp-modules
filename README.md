@@ -33,3 +33,11 @@ This repository, which does not have enough comments, includes a sample project 
 Thus, I recommend you to read SampleMain.h and SampleMain.cpp before using the modules.
 
 The sample project creates the modules then leaves simple logs.
+
+# Team
+
+These codes were written while I have worked in HCIL, Seoul National University (http://hcil.snu.ac.kr) with
+
+- Han Joo Chae
+- Youli Chang
+- Jungin Hwang
